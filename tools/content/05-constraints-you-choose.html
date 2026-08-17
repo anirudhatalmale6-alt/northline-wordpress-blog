@@ -1,0 +1,55 @@
+<!-- wp:paragraph -->
+<p>Everyone works under constraints. The interesting question is who chose them. A budget, a deadline, a legacy database schema — those are inherited, and the standard response is to complain about them and work around them. A chosen constraint behaves completely differently, and the difference is not psychological. It is structural.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Inherited constraints are boundaries. Chosen ones are tools.</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>An inherited constraint tells you where you cannot go. It gives you no information about where you should go, which is why it feels purely negative — it removes options without suggesting any. That is the whole experience of working around a bad API.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A chosen constraint is different because you picked it <em>for a reason</em>, and the reason points somewhere. "No JavaScript on this page" is not just a prohibition; it is a claim about what the page is for, and it immediately tells you what to do instead. The constraint carries its own direction.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><!-- wp:paragraph --><p>A constraint you chose comes with an argument attached. That argument, not the limit itself, is what does the work.</p><!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Three that changed how I work</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list">
+<li><strong>One screen, no scrolling, for any explanation.</strong> If I cannot fit the explanation of a decision on one screen, I do not understand the decision yet. This has killed more bad architecture than any review process I have been part of.</li>
+<li><strong>No new dependency without deleting one.</strong> Not a hard rule in emergencies, but the default. It forces the question "what is this actually replacing?" which is a much better question than "is this library good?"</li>
+<li><strong>Ship something visible every week.</strong> Not necessarily shipped to users — visible to someone other than me. Long invisible stretches are where projects quietly stop being real.</li>
+</ol>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">The failure mode</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Chosen constraints go wrong when you forget the argument and keep the rule. I held onto the no-new-dependency rule for about eight months past its usefulness on one project, long after the codebase had shrunk to the point where the rule was solving a problem that no longer existed. It stopped being a tool and became an inherited constraint that I had inherited from myself, which is the worst kind — nobody else is going to question it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>So I write the argument down next to the rule, and I re-read it whenever the rule is inconvenient. Not to talk myself out of it — usually the argument still holds and the inconvenience is the point. But roughly one time in five the argument has expired, and that is a thing worth catching.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Converting inherited into chosen</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>There is a move here that I have found genuinely useful. When you are stuck with a constraint you did not pick, look for the version of it you would have chosen, and adopt that instead. A tight deadline you did not set is demoralising. "We are going to ship the smallest thing that is honestly useful by Friday" is the same limit with an argument attached, and the argument tells you what to cut.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The limit does not move. What moves is whether it points anywhere.</p>
+<!-- /wp:paragraph -->

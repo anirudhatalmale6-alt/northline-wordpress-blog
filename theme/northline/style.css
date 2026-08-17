@@ -1,0 +1,413 @@
+/*
+Theme Name: Northline
+Theme URI: https://example.com/northline
+Description: Editorial blog layout built as a child theme of Twenty Twenty-Five. Magazine-style home page, readable long-form article template, category archives and a newsletter footer.
+Author: Anirudha Talmale
+Version: 1.0.0
+Requires at least: 6.7
+Tested up to: 7.0
+Requires PHP: 7.4
+Template: twentytwentyfive
+Text Domain: northline
+Tags: blog, one-column, block-patterns, editor-style, full-site-editing
+*/
+
+/* ---------------------------------------------------------------------
+   Everything below is layout polish that theme.json cannot express.
+   Design tokens (colour, type scale, spacing) live in theme.json.
+   ------------------------------------------------------------------ */
+
+/* --- Eyebrow / category chip ------------------------------------- */
+.nl-eyebrow,
+.nl-eyebrow a {
+	font-family: var(--wp--preset--font-family--manrope);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--wp--preset--color--accent);
+}
+
+.nl-eyebrow a:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+/* --- Meta line ---------------------------------------------------- */
+.nl-meta,
+.nl-meta a {
+	font-family: var(--wp--preset--font-family--manrope);
+	font-size: 0.8125rem;
+	color: var(--wp--preset--color--contrast-2);
+	text-decoration: none;
+}
+
+.nl-meta a:hover {
+	color: var(--wp--preset--color--contrast);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.nl-meta .wp-block-post-date,
+.nl-meta .wp-block-post-author-name {
+	margin: 0;
+}
+
+/* --- Cards -------------------------------------------------------- */
+.nl-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+/* Pin the meta line to the bottom so a row of cards lines up regardless of
+   how long each excerpt runs. */
+.nl-card > .nl-meta {
+	margin-top: auto;
+	padding-top: var(--wp--preset--spacing--20);
+}
+
+.nl-card .wp-block-post-featured-image {
+	overflow: hidden;
+	border-radius: 6px;
+	margin-bottom: var(--wp--preset--spacing--30);
+}
+
+.nl-card .wp-block-post-featured-image img {
+	width: 100%;
+	transition: transform 0.5s ease;
+}
+
+.nl-card:hover .wp-block-post-featured-image img {
+	transform: scale(1.035);
+}
+
+.nl-card .wp-block-post-title a {
+	text-decoration: none;
+	background-image: linear-gradient(currentColor, currentColor);
+	background-size: 0 1px;
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+	transition: background-size 0.3s ease;
+	padding-bottom: 2px;
+}
+
+.nl-card:hover .wp-block-post-title a {
+	background-size: 100% 1px;
+}
+
+/* --- Hero (lead story) -------------------------------------------- */
+.nl-hero .wp-block-post-featured-image {
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.nl-hero .wp-block-post-title a {
+	text-decoration: none;
+}
+
+.nl-hero .wp-block-post-title a:hover {
+	color: var(--wp--preset--color--accent);
+}
+
+@media (min-width: 782px) {
+	.nl-hero {
+		align-items: center;
+	}
+}
+
+/* Archive intro text sits under a full-width heading, so cap its measure. */
+.nl-measure {
+	max-width: 620px;
+}
+
+/* --- Section rule ------------------------------------------------- */
+.nl-rule {
+	border: 0;
+	border-top: 1px solid var(--wp--preset--color--line);
+	height: 0;
+	margin: 0;
+	opacity: 1;
+}
+
+.nl-section-head {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: var(--wp--preset--spacing--30);
+}
+
+/* --- Article body: measure + rhythm ------------------------------- */
+.nl-article .wp-block-post-content > * {
+	margin-block: 1.4em;
+}
+
+.nl-article .wp-block-post-content > h2 {
+	margin-block-start: 2.1em;
+	margin-block-end: 0.6em;
+}
+
+.nl-article .wp-block-post-content > h3 {
+	margin-block-start: 1.7em;
+	margin-block-end: 0.5em;
+}
+
+.nl-article .wp-block-post-content blockquote {
+	border-left: 3px solid var(--wp--preset--color--accent);
+	padding-left: var(--wp--preset--spacing--40);
+	margin-left: 0;
+	font-style: italic;
+	font-size: var(--wp--preset--font-size--large);
+	color: var(--wp--preset--color--contrast);
+}
+
+.nl-article .wp-block-post-content blockquote p {
+	margin-block: 0.5em;
+}
+
+.nl-article .wp-block-post-content figure img {
+	border-radius: 6px;
+}
+
+.nl-article .wp-block-post-content figcaption {
+	font-family: var(--wp--preset--font-family--manrope);
+	font-size: 0.8125rem;
+	color: var(--wp--preset--color--contrast-2);
+	text-align: center;
+	margin-top: 0.75em;
+}
+
+.nl-article .wp-block-post-content ul,
+.nl-article .wp-block-post-content ol {
+	padding-left: 1.25em;
+}
+
+.nl-article .wp-block-post-content li {
+	margin-block: 0.5em;
+}
+
+/* Featured image sits slightly wider than the reading measure. */
+.nl-article > .wp-block-post-featured-image {
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+/* --- Tag pills ---------------------------------------------------- */
+.nl-tags .wp-block-post-terms__separator {
+	display: none;
+}
+
+.nl-tags a {
+	display: inline-block;
+	font-family: var(--wp--preset--font-family--manrope);
+	font-size: 0.8125rem;
+	line-height: 1;
+	padding: 0.55em 0.9em;
+	margin: 0 0.4em 0.5em 0;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 999px;
+	text-decoration: none;
+	color: var(--wp--preset--color--contrast-2);
+	transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.nl-tags a:hover {
+	border-color: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--accent);
+}
+
+/* --- Header ------------------------------------------------------- */
+.nl-header {
+	border-bottom: 1px solid var(--wp--preset--color--line);
+}
+
+.nl-brand a,
+.nl-brand {
+	text-decoration: none;
+	font-family: var(--wp--preset--font-family--literata);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	color: var(--wp--preset--color--contrast);
+}
+
+.nl-nav a {
+	font-family: var(--wp--preset--font-family--manrope);
+	font-size: 0.9375rem;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.nl-nav a:hover {
+	color: var(--wp--preset--color--accent);
+}
+
+.nl-nav .current-menu-item a {
+	color: var(--wp--preset--color--accent);
+}
+
+/* --- Footer ------------------------------------------------------- */
+.nl-footer a {
+	text-decoration: none;
+}
+
+.nl-footer-links {
+	list-style: none;
+	margin: 0;
+}
+
+.nl-footer .wp-block-categories {
+	list-style: none;
+	padding-left: 0;
+}
+
+.nl-footer a:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+/* --- Pagination --------------------------------------------------- */
+.wp-block-query-pagination {
+	font-family: var(--wp--preset--font-family--manrope);
+	font-size: 0.9375rem;
+}
+
+.wp-block-query-pagination a {
+	text-decoration: none;
+}
+
+.wp-block-query-pagination a:hover {
+	color: var(--wp--preset--color--accent);
+}
+
+.wp-block-query-pagination-numbers .page-numbers {
+	display: inline-block;
+	min-width: 2.25em;
+	text-align: center;
+	padding: 0.35em 0;
+	border-radius: 4px;
+}
+
+.wp-block-query-pagination-numbers .current {
+	background: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+}
+
+/* --- Search form -------------------------------------------------- */
+.wp-block-search__input {
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 4px;
+	padding: 0.7em 0.9em;
+	font-family: var(--wp--preset--font-family--manrope);
+}
+
+.wp-block-search__button {
+	border-radius: 4px;
+	font-family: var(--wp--preset--font-family--manrope);
+	font-weight: 600;
+}
+
+/* The header search is icon-only — keep it a quiet outline, not a black slab. */
+.nl-header .wp-block-search.wp-block-search__button-only .wp-block-search__button {
+	background: transparent;
+	color: var(--wp--preset--color--contrast);
+	border: 1px solid var(--wp--preset--color--line);
+	padding: 0.5em;
+	min-width: 40px;
+	transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.nl-header .wp-block-search.wp-block-search__button-only .wp-block-search__button:hover,
+.nl-header .wp-block-search.wp-block-search__button-only .wp-block-search__button:focus {
+	border-color: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--accent);
+}
+
+.nl-header .wp-block-search__button svg {
+	fill: currentColor;
+}
+
+/* --- Newsletter band ---------------------------------------------- */
+.nl-newsletter .wpcf7 form > p {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--20);
+	justify-content: center;
+	margin: 0;
+}
+
+.nl-newsletter .wpcf7 .wpcf7-form-control-wrap {
+	flex: 1 1 260px;
+	max-width: 340px;
+}
+
+.nl-newsletter .wpcf7 input[type="email"] {
+	width: 100%;
+	margin-top: 0;
+	background: var(--wp--preset--color--base);
+}
+
+.nl-newsletter .wpcf7 input[type="submit"] {
+	flex: 0 0 auto;
+	margin-top: 0;
+}
+
+.nl-newsletter .wpcf7-response-output {
+	flex-basis: 100%;
+	margin: var(--wp--preset--spacing--30) 0 0;
+	font-family: var(--wp--preset--font-family--manrope);
+	font-size: 0.9375rem;
+	text-align: center;
+}
+
+/* --- Contact Form 7 inside the block theme ------------------------ */
+.wpcf7 form label {
+	display: block;
+	font-family: var(--wp--preset--font-family--manrope);
+	font-size: 0.9375rem;
+	font-weight: 600;
+	margin-bottom: var(--wp--preset--spacing--30);
+}
+
+.wpcf7 input[type="text"],
+.wpcf7 input[type="email"],
+.wpcf7 input[type="url"],
+.wpcf7 textarea {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	margin-top: 0.4em;
+	padding: 0.7em 0.9em;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 4px;
+	font-family: var(--wp--preset--font-family--manrope);
+	font-size: 1rem;
+	font-weight: 400;
+	background: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
+}
+
+.wpcf7 input[type="submit"] {
+	background: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+	border: 0;
+	border-radius: 4px;
+	padding: 0.8em 1.6em;
+	font-family: var(--wp--preset--font-family--manrope);
+	font-size: 0.9375rem;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.wpcf7 input[type="submit"]:hover {
+	background: var(--wp--preset--color--accent);
+}
+
+/* --- Reduced motion ----------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+	.nl-card,
+	.nl-card .wp-block-post-featured-image img,
+	.nl-card .wp-block-post-title a {
+		transition: none;
+	}
+}
